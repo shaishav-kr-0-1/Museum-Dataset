@@ -1,15 +1,19 @@
-#1) Fetch all the paintings which are not displayed on any museums? 
-select * from work
-where museum_id is null;
 
-#2) Are there museuems without any paintings?
+
+
+-- 1) Fetch all the paintings which are not displayed on any museums? 
+SELECT * FROM WORK
+WHERE museum_id IS NULL;
+
+-- 2) Are there museuems without any paintings?
 Select m.name,count(w.name) from museum m
 join work w
 on m.museum_id = w.museum_id
 group by 1;
 
-#No of painting made by artist
-select full_name , count(w.name) as "No. of paintings" from artist a
+-- 3.  No of painting made by artist
+
+SELECT full_name , count(w.name) as "No. of paintings" from artist a
 join work w 
 on a.artist_id = w.artist_id
 group by 1;
@@ -30,4 +34,5 @@ where regular_price < (sale_price/2);
 
 
 #5) Which canva size costs the most?
-select size_id from canvas_size;
+SELECT  size_id FROM canvas_size
+ORDER BY SIZE_ID DESC;
